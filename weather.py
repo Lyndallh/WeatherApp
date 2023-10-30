@@ -28,14 +28,10 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
-    """Converts an temperature from farenheit to celcius.
-
-    Args:
-        temp_in_farenheit: float representing a temperature.
-    Returns:
-        A float representing a temperature in degrees celcius, rounded to 1dp.
-    """
-    pass
+    temp_in_farenheit = float(temp_in_farenheit)
+    temp_in_celsius = float((temp_in_farenheit- 32) * 5/9)
+    result = round(temp_in_celsius,1)
+    return result
 
 
 def calculate_mean(weather_data):
@@ -62,7 +58,6 @@ def load_data_from_csv(csv_file):
 
 def find_min(weather_data):
     """Calculates the minimum value in a list of numbers.
-
     Args:
         weather_data: A list of numbers.
     Returns:
