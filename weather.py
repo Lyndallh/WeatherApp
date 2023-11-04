@@ -13,10 +13,16 @@ def format_temperature(temp):
     Returns:
         A string contain the temperature and "degrees celcius."
     """
+    # this one is already done
     return f"{temp}{DEGREE_SYBMOL}"
 
 
 def convert_date(iso_string):
+
+    date = datetime.fromisoformat(iso_string)
+    return date.strftime('%A %d %B %Y')
+
+
     """Converts and ISO formatted date into a human readable format.
 
     Args:
@@ -28,8 +34,8 @@ def convert_date(iso_string):
 
 
 def convert_f_to_c(temp_in_farenheit):
-    temp_in_farenheit = float(temp_in_farenheit)
-    temp_in_celsius = float((temp_in_farenheit- 32) * 5/9)
+    temp_in_farenheit_float = float(temp_in_farenheit)
+    temp_in_celsius = float((temp_in_farenheit_float - 32) * 5/9)
     result = round(temp_in_celsius,1)
     return result
 
@@ -38,7 +44,8 @@ def calculate_mean(weather_data):
     """Calculates the mean value from a list of numbers.
 
     Args:
-        weather_data: a list of numbers.
+        weather_data: a list of numbers. 
+        # (I heard that weather data is a list of lists)
     Returns:
         A float representing the mean value.
     """
