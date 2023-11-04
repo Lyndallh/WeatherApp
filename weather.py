@@ -41,15 +41,36 @@ def convert_f_to_c(temp_in_farenheit):
 
 
 def calculate_mean(weather_data):
-    """Calculates the mean value from a list of numbers.
+    # print(weather_data)
+    # print(type(weather_data))
+    len_weather = int(len(weather_data))
+    # print(len_weather)
+    sum_weather = (sum(float(x) for x in weather_data))
+    mean_weather = (sum_weather / len_weather)
+    # print(sum_weather)
+    # print(mean_weather)
+    # print(type(mean_weather))
+    return mean_weather
+# calculate_mean([49, 57, 56, 55, 53])
+# calculate_mean([51.0, 58.2, 59.9, 52.4, 52.1, 48.4, 47.8, 53.43])
+# calculate_mean(["51", "58", "59", "52", "52", "48", "47", "53"])
+# calculate_mean([-51, -58, -59, -52, -52, -48, -47, -53])
 
-    Args:
-        weather_data: a list of numbers. 
-        # (I heard that weather data is a list of lists)
-    Returns:
-        A float representing the mean value.
-    """
-    pass
+
+    # temperatures = weather_data[1,2]
+    # weather_count = temperatures.count(temperatures)
+    # weather_sum = sum(temperatures())
+    # weather_mean = weather_sum / weather_count
+    # return weather_mean
+
+    # """Calculates the mean value from a list of numbers.
+
+    # Args:
+    #     weather_data: a list of numbers. 
+    #     # (I heard that weather data is a list of lists)
+    # Returns:
+    #     A float representing the mean value.
+    # """
 
 
 def load_data_from_csv(csv_file):
@@ -70,6 +91,7 @@ def find_min(weather_data):
     Returns:
         The minium value and it's position in the list.
     """
+    
     pass
 
 
