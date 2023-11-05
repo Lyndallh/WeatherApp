@@ -68,15 +68,15 @@ def load_data_from_csv(csv_file):
         reader = csv.reader(current_file)
         next(reader)
 
-        data_list = []
+        weather_data = []
   
         for row in reader:
             if row:
                 row[1] = int(row[1])
                 row[2] = int(row[2])
-                data_list.append(row[:])
+                weather_data.append(row[:])
 
-        print(data_list)
+
     """Reads a csv file and stores the data in a list.
 
     Args:
@@ -84,10 +84,7 @@ def load_data_from_csv(csv_file):
     Returns:
         A list of lists, where each sublist is a (non-empty) line in the csv file.
     """
-    return list(data_list)
-load_data_from_csv("WeatherApp/tests/data/example_one.csv")
-load_data_from_csv("WeatherApp/tests/data/example_two.csv")
-# load_data_from_csv("WeatherApp/tests/data/example_three.csv")
+    return list(weather_data)
 
 def find_min(weather_data):
     """Calculates the minimum value in a list of numbers.
