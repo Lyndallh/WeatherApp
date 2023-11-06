@@ -69,7 +69,7 @@ def load_data_from_csv(csv_file):
         next(reader)
 
         weather_data = []
-  
+#   turn the temp values into integers
         for row in reader:
             if row:
                 row[1] = int(row[1])
@@ -87,21 +87,35 @@ def load_data_from_csv(csv_file):
     return list(weather_data)
 
 def find_min(weather_data):
-    min_value = float(min(weather_data))
-    minpos = weather_data.index(min(weather_data))
 
-    """Calculates the minimum value in a list of numbers.
-    Args:
-        weather_data: A list of numbers.
-    Returns:
-        The minium value and it's position in the list.
-    """
-    print(min_value,",",minpos)
-    return (min_value,minpos)
-find_min ([49, 57, 56, 55, 53])
+    if weather_data:
+        min_value = float(min(weather_data))
+        min_positions = [i for i in range(len(weather_data)) if float((weather_data)[i]) == min_value]
+        if min_positions:
+            last_min_position = max(min_positions)
+        else:
+            return ()
+    else:
+        return ()
+        """Calculates the minimum value in a list of numbers.
+        Args:
+            weather_data: A list of numbers.
+        Returns:
+            The minium value and of there is moe than one min value, the last min value's position in the list.
+        """
 
+    return (min_value, last_min_position)
 
 def find_max(weather_data):
+    if weather_data:
+        max_value = float(max(weather_data))
+        max_positions = [i for i in range(len(weather_data)) if float((weather_data)[i]) == max_value]
+        if max_positions:
+            last_max_position = max(max_positions)
+        else:
+            return ()
+    else:
+        return ()
     """Calculates the maximum value in a list of numbers.
 
     Args:
@@ -109,8 +123,7 @@ def find_max(weather_data):
     Returns:
         The maximum value and it's position in the list.
     """
-    pass
-
+    return (max_value, last_max_position)
 
 def generate_summary(weather_data):
     """Outputs a summary for the given weather data.
