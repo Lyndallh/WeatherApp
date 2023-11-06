@@ -132,7 +132,7 @@ def generate_summary(weather_data):
         weather_data: A list of lists, where each sublist represents a day of weather data.
     Returns:
         A string containing the summary information.
-    """
+    """ 
     pass
 
 
