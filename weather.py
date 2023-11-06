@@ -87,14 +87,18 @@ def load_data_from_csv(csv_file):
     return list(weather_data)
 
 def find_min(weather_data):
+    min_value = float(min(weather_data))
+    minpos = weather_data.index(min(weather_data))
+
     """Calculates the minimum value in a list of numbers.
     Args:
         weather_data: A list of numbers.
     Returns:
         The minium value and it's position in the list.
     """
-    
-    pass
+    print(min_value,",",minpos)
+    return (min_value,minpos)
+find_min ([49, 57, 56, 55, 53])
 
 
 def find_max(weather_data):
