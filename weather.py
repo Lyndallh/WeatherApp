@@ -76,7 +76,6 @@ def load_data_from_csv(csv_file):
                 row[2] = int(row[2])
                 weather_data.append(row[:])
 
-
     """Reads a csv file and stores the data in a list.
 
     Args:
@@ -107,6 +106,13 @@ def find_min(weather_data):
     return (min_value, last_min_position)
 
 def find_max(weather_data):
+    """Calculates the maximum value in a list of numbers.
+
+    Args:
+        weather_data: A list of numbers.
+    Returns:
+        The maximum value and it's position in the list.
+    """    
     if weather_data:
         max_value = float(max(weather_data))
         max_positions = [i for i in range(len(weather_data)) if float((weather_data)[i]) == max_value]
@@ -116,27 +122,56 @@ def find_max(weather_data):
             return ()
     else:
         return ()
-    """Calculates the maximum value in a list of numbers.
-
-    Args:
-        weather_data: A list of numbers.
-    Returns:
-        The maximum value and it's position in the list.
-    """
     return (max_value, last_max_position)
 
 def generate_summary(weather_data):
-    """Outputs a summary for the given weather data.
+
+    count_rows = len(weather_data) # counting the rows of data - a row for each day
+
+    # convert the array into lists
+    date_list = [row[0] for row in weather_data]
+    mins_list = [row[1] for row in weather_data]
+    maxs_list = [row[2] for row in weather_data]
+
+    # min_tuple = find_min(mins_list)
+    # min_value = min_tuple[0]
+    # min_position = min_tuple[1]
+    # min_date = convert_date(date_list[min_position])
+    # min_temp = format_temperature(convert_f_to_c(min_value))
+
+    min_temp = format_temperature(convert_f_to_c(find_min(mins_list)[0]))
+    min_date = convert_date(date_list[find_min(mins_list)[1]])
+
+    # max_tuple = find_max(maxs_list)
+    # max_value = find_max(maxs_list)[0]
+    # max_position = find_max(maxs_list)[1]
+
+    max_temp = format_temperature(convert_f_to_c(find_max(maxs_list)[0]))
+    max_date = convert_date(date_list[find_max(maxs_list)[1]])
+
+    avg_min = format_temperature(convert_f_to_c(calculate_mean(mins_list)))
+    avg_max = format_temperature(convert_f_to_c(calculate_mean(maxs_list)))
+        
+    summary = (f"{count_rows} Day Overview\n  The lowest temperature will be {min_temp}, and will occur on {min_date}.\n  The highest temperature will be {max_temp}, and will occur on {max_date}.\n  The average low this week is {avg_min}.\n  The average high this week is {avg_max}.\n")
+    """    
+   Outputs a summary for the given weather data.
 
     Args:
         weather_data: A list of lists, where each sublist represents a day of weather data.
     Returns:
         A string containing the summary information.
     """ 
-    pass
-
+    return (summary)
 
 def generate_daily_summary(weather_data):
+    daily_summary =""
+    for row in weather_data:
+
+        date = convert_date(row[0])
+        min_temp = format_temperature(convert_f_to_c(row[1])) 
+        max_temp = format_temperature(convert_f_to_c(row[2]))
+        daily_summary += (f"---- {date} ----\n  Minimum Temperature: {min_temp}\n  Maximum Temperature: {max_temp}\n\n")
+
     """Outputs a daily summary for the given weather data.
 
     Args:
@@ -144,4 +179,5 @@ def generate_daily_summary(weather_data):
     Returns:
         A string containing the summary information.
     """
-    pass
+    return((daily_summary))
+
